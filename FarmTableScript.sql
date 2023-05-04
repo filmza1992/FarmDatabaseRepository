@@ -58,16 +58,16 @@ ENGINE=InnoDB
 ;
 CREATE TABLE `breeder` (
 	`id` VARCHAR(30) NOT NULL COLLATE 'utf8mb4_thai_520_w2',
-	`name` VARCHAR(35) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
-	`dadId` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
-	`momId` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
+	`name` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
+	`dadId` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
+	`momId` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	PRIMARY KEY (`id`) USING BTREE,
-	INDEX `FK_breeder_breeder` (`dadId`) USING BTREE,
-	CONSTRAINT `FK_breeder_breeder` FOREIGN KEY (`dadId`) REFERENCES `farmdb`.`breeder` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
+	INDEX `FK_breeder_breeder` (`dadId`) USING BTREE
 )
 COLLATE='utf8mb4_thai_520_w2'
 ENGINE=InnoDB
 ;
+
 
 CREATE TABLE `cow` (
 	`farmerId` VARCHAR(10) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
@@ -98,7 +98,7 @@ ENGINE=InnoDB
 
 
 CREATE TABLE `cowbreed` (
-	`cowId` VARCHAR(10) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
+	`cowId` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`breedId` VARCHAR(5) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`percen` DOUBLE NULL DEFAULT NULL,
 	`perInt` INT(11) NULL DEFAULT NULL,
@@ -108,11 +108,10 @@ CREATE TABLE `cowbreed` (
 	CONSTRAINT `FK_cowbreed_cow` FOREIGN KEY (`cowId`) REFERENCES `farmdb`.`cow` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 COLLATE='utf8mb4_thai_520_w2'
-ENGINE=InnoDB
+ENGINE=INNODB
 ;
-
 CREATE TABLE `breederbreed` (
-	`breederId` VARCHAR(15) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
+	`breederId` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`breedId` VARCHAR(5) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`percen` INT(11) NULL DEFAULT NULL,
 	`perInt` INT(11) NULL DEFAULT NULL,
@@ -124,4 +123,5 @@ CREATE TABLE `breederbreed` (
 COLLATE='utf8mb4_thai_520_w2'
 ENGINE=InnoDB
 ;
+
 
