@@ -102,19 +102,25 @@ CREATE TABLE `cowbreed` (
 	`breedId` VARCHAR(5) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`percen` DOUBLE NULL DEFAULT NULL,
 	`perInt` INT(11) NULL DEFAULT NULL,
+	`num_up` INT(11) NULL DEFAULT NULL,
+	`num_low` INT(11) NULL DEFAULT NULL,
 	INDEX `FK_cowbreed_cow` (`cowId`) USING BTREE,
 	INDEX `FK_cowbreed_breed` (`breedId`) USING BTREE,
 	CONSTRAINT `FK_cowbreed_breed` FOREIGN KEY (`breedId`) REFERENCES `farmdb`.`breed` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION,
 	CONSTRAINT `FK_cowbreed_cow` FOREIGN KEY (`cowId`) REFERENCES `farmdb`.`cow` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 COLLATE='utf8mb4_thai_520_w2'
-ENGINE=INNODB
+ENGINE=InnoDB
 ;
+
+
 CREATE TABLE `breederbreed` (
 	`breederId` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`breedId` VARCHAR(5) NULL DEFAULT NULL COLLATE 'utf8mb4_thai_520_w2',
 	`percen` INT(11) NULL DEFAULT NULL,
 	`perInt` INT(11) NULL DEFAULT NULL,
+	`num_up` INT(11) NULL DEFAULT NULL,
+	`num_low` INT(11) NULL DEFAULT NULL,
 	INDEX `FK__breeder` (`breederId`) USING BTREE,
 	INDEX `FK__breed` (`breedId`) USING BTREE,
 	CONSTRAINT `FK__breed` FOREIGN KEY (`breedId`) REFERENCES `farmdb`.`breed` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION,
@@ -123,5 +129,4 @@ CREATE TABLE `breederbreed` (
 COLLATE='utf8mb4_thai_520_w2'
 ENGINE=InnoDB
 ;
-
 
